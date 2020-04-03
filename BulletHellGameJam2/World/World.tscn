@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.cs" type="Script" id=2]
 [ext_resource path="res://Bullet/Bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/World.cs" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
 [node name="World" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 544, 480 )
@@ -21,3 +23,13 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="BulletHolder" type="Node" parent="."]
+
+[node name="EnemyHolder" type="Node" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 296 )
+current = true
