@@ -8,15 +8,20 @@ public class Player : KinematicBody2D
 
     [Export] private PackedScene _bulletScene;
 
+    private Vector2 _screenSize;
+
     public override void _Ready()
     {
         _bulletScene = ResourceLoader.Load<PackedScene>("res://Bullet/Bullet.tscn");
+        _screenSize = GetViewport().Size;
     }
 
     public override void _PhysicsProcess(float delta)
     {
         Velocity = Velocity.Normalized() * Speed;
         MoveAndSlide(Velocity);
+
+        Position = new Vector2(Mathf.Clamp(Position.x, 0, _screenSize.x), Mathf.Clamp(Position.y, 0, _screenSize.y));
     }
 
     public override void _Input(InputEvent @event)
@@ -33,7 +38,7 @@ public class Player : KinematicBody2D
     private void Shoot()
     {
         Bullet bullet = _bulletScene.Instance() as Bullet;
+        GetNode("/root/World/BulletHolder").AddChild(bullet);
         bullet.Position = Position;
-        GD.Print("POW POW");
     }
 }
