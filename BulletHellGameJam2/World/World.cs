@@ -23,13 +23,6 @@ public class World : Node2D
         _camera = GetNode<Camera2D>("Camera2D");
     }
 
-    public override void _PhysicsProcess(float delta)
-    {
-        //scrolling
-        _player.Position = new Vector2(_player.Position.x, _player.Position.y - 1);
-        _camera.Position = new Vector2(_camera.Position.x, _camera.Position.y - 1);
-    }
-
     private void SpawnEnemies()
     {
         for (var i = 0; i < 3; i++)
