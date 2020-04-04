@@ -1,6 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://MainMenu/MainMenu.cs" type="Script" id=1]
+[ext_resource path="res://Font.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Player/Idle animation.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=3]
+size = 80
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 2 )
 
 [sub_resource type="InputEventJoypadButton" id=1]
 
@@ -19,13 +29,26 @@ __meta__ = {
 margin_right = 512.0
 margin_bottom = 600.0
 color = Color( 0, 0.0627451, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 416, 112 )
+texture = ExtResource( 3 )
+hframes = 27
+
+[node name="Icon2" type="Sprite" parent="."]
+position = Vector2( 96, 112 )
+texture = ExtResource( 3 )
+hframes = 27
 
 [node name="Title" type="Label" parent="."]
-margin_left = 136.0
+margin_left = 128.0
 margin_top = 72.0
-margin_right = 193.0
-margin_bottom = 86.0
-rect_scale = Vector2( 4, 4 )
+margin_right = 391.0
+margin_bottom = 149.0
+custom_fonts/font = SubResource( 3 )
 text = "Antivirus"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -39,13 +62,14 @@ margin_bottom = 590.0
 text = "Programmed by Nooh Alavi, Art by waller3000"
 
 [node name="Button" type="Button" parent="."]
-margin_left = 200.0
-margin_top = 192.0
-margin_right = 253.0
-margin_bottom = 212.0
-rect_scale = Vector2( 2, 2 )
+margin_left = 216.0
+margin_top = 256.0
+margin_right = 300.0
+margin_bottom = 293.0
+custom_fonts/font = SubResource( 4 )
 shortcut = SubResource( 2 )
 text = "PLAY"
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -1,11 +1,98 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://GameOver/GameOver.cs" type="Script" id=1]
+[ext_resource path="res://Font.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Enemy/Idle.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=3]
+size = 60
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 2 )
 
 [sub_resource type="InputEventJoypadButton" id=1]
 
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Anim"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Idle2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Idle3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Idle4:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Idle5:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Idle6:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
 
 [node name="GameOver" type="Control"]
 anchor_right = 1.0
@@ -28,7 +115,7 @@ margin_left = 96.0
 margin_top = 72.0
 margin_right = 176.0
 margin_bottom = 86.0
-rect_scale = Vector2( 4, 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "GAME OVER!"
 __meta__ = {
@@ -40,7 +127,7 @@ margin_left = 176.0
 margin_top = 256.0
 margin_right = 257.0
 margin_bottom = 276.0
-rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 shortcut = SubResource( 2 )
@@ -49,3 +136,49 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Anim"
+anims/Anim = SubResource( 5 )
+
+[node name="Idle" type="Sprite" parent="."]
+position = Vector2( 96, 360 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 27
+frame = 6
+
+[node name="Idle2" type="Sprite" parent="."]
+position = Vector2( 448, 184 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 27
+frame = 6
+
+[node name="Idle3" type="Sprite" parent="."]
+position = Vector2( 408, 504 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 27
+frame = 6
+
+[node name="Idle4" type="Sprite" parent="."]
+position = Vector2( 80, 184 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 27
+frame = 6
+
+[node name="Idle5" type="Sprite" parent="."]
+position = Vector2( 168, 520 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 27
+frame = 6
+
+[node name="Idle6" type="Sprite" parent="."]
+position = Vector2( 456, 48 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 27
+frame = 6
