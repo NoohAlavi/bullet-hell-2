@@ -6,6 +6,8 @@ public class Player : KinematicBody2D
     [Export] public Vector2 Velocity = new Vector2();
     [Export] public float MaxSpeed = 200f;
     [Export] public float Health = 3f;
+    [Export] public float NumShots = 1f;
+    [Export] public float XP = 0f;
 
     private float Speed;
 
@@ -42,8 +44,9 @@ public class Player : KinematicBody2D
         {
             GetTree().ChangeScene("res://GameOver/GameOver.tscn");
         }
-        GetNode<Label>("/root/World/HUD/LivesLabel").Text = "LIVES: " + Health.ToString();
+        // GetNode<Label>("/root/World/HUD/LivesLabel").Text = "LIVES: " + Health.ToString();
         GetNode<Sprite>("/root/World/HUD/LivesBar").Frame = Convert.ToInt32(3f - Health);
+        GetNode<TextureProgress>("/root/World/HUD/XPBar").Value = XP;
     }
 
     public override void _PhysicsProcess(float delta)
