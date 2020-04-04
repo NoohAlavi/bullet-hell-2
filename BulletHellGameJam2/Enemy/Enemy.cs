@@ -21,6 +21,8 @@ public class Enemy : KinematicBody2D
 
         _screenSize = GetViewport().Size;
         _player = GetNode<Player>("/root/World/Player");
+
+        Shoot();
     }
 
     public override void _Process(float delta)
