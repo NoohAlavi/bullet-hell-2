@@ -15,7 +15,7 @@ public class Enemy : KinematicBody2D
         _shootTimer = GetNode<Timer>("ShootTimer");
         _shootTimer.Connect("timeout", this, "Shoot");
 
-        _shootTimer.WaitTime = GD.Randi() % 1 + 1;
+        _shootTimer.WaitTime = GD.Randf() + 0.1f;
 
         _bulletScene = ResourceLoader.Load<PackedScene>("res://Bullet/Bullet.tscn");
 
@@ -42,13 +42,6 @@ public class Enemy : KinematicBody2D
         // bullet.LookAt(_player.Position);
         bullet.Speed = 250f;
 
-        if (GD.Randf() > 0.5f)
-        {
-            bullet.Direction = Position.DirectionTo(_player.Position);
-        }
-        else
-        {
-            bullet.Direction = Vector2.Down;
-        }
+        bullet.Direction = Position.DirectionTo(_player.Position);
     }
 }
