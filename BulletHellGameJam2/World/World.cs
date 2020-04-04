@@ -21,6 +21,8 @@ public class World : Node2D
 
         _player = GetNode<Player>("Player");
         _camera = GetNode<Camera2D>("Camera2D");
+
+        SpawnEnemies();
     }
 
     public override void _PhysicsProcess(float delta)
@@ -28,6 +30,11 @@ public class World : Node2D
         foreach (Node2D s in GetTree().GetNodesInGroup("ScrollableItems"))
         {
             s.Position = new Vector2(s.Position.x, s.Position.y + 1);
+        }
+
+        if (GetNode("EnemyHolder").GetChildren().Count == 0)
+        {
+            SpawnEnemies();
         }
     }
 
