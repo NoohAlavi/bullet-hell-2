@@ -13,7 +13,7 @@ public class Bullet : Area2D
         float r = GD.Randf();
         float g = GD.Randf();
         float b = GD.Randf();
-        GetNode<ColorRect>("ColorRect").Color = new Color(r, g, b);
+        GetNode<Sprite>("Sprite").Modulate = new Color(r, g, b);
     }
 
     public override void _PhysicsProcess(float delta)
