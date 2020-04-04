@@ -43,6 +43,7 @@ public class Player : KinematicBody2D
             GetTree().ChangeScene("res://GameOver/GameOver.tscn");
         }
         GetNode<Label>("/root/World/HUD/LivesLabel").Text = "LIVES: " + Health.ToString();
+        GetNode<Sprite>("/root/World/HUD/LivesBar").Frame = Convert.ToInt32(3f - Health);
     }
 
     public override void _PhysicsProcess(float delta)
