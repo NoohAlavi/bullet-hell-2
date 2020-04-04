@@ -39,6 +39,8 @@ public class Bullet : Area2D
         {
             Player p = body as Player;
             p.Health--;
+            p.HurtParticles.Emitting = true;
+            p.ParticlesTimer.Start();
             QueueFree();
         }
     }

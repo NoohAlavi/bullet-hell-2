@@ -14,6 +14,9 @@ public class Player : KinematicBody2D
     private Vector2 _screenSize;
     private ColorRect _collision;
 
+    public CPUParticles2D HurtParticles;
+    public Timer ParticlesTimer;
+
     public override void _Ready()
     {
         _bulletScene = ResourceLoader.Load<PackedScene>("res://Bullet/Bullet.tscn");
@@ -22,6 +25,12 @@ public class Player : KinematicBody2D
         Speed = MaxSpeed;
 
         _collision = GetNode<ColorRect>("Collider/ColorRect");
+
+        HurtParticles = GetNode<CPUParticles2D>("CPUParticles2D");
+        HurtParticles.Emitting = false;
+
+        ParticlesTimer = GetNode<Timer>("ParticlesTimer");
+        ParticlesTimer.Connect("timeout", this, "HideParticles");
     }
 
     public override void _Process(float delta)
@@ -79,5 +88,10 @@ public class Player : KinematicBody2D
         bullet.Direction = Vector2.Up;
         bullet.Speed = 1000f;
         bullet.LookAt(Vector2.Up);
+    }
+
+    private void HideParticles()
+    {
+        HurtParticles.Emitting = false;
     }
 }
