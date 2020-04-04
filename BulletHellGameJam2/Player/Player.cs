@@ -92,7 +92,7 @@ public class Player : KinematicBody2D
         bullet.Position = Position;
         bullet.Direction = Vector2.Up;
         bullet.Speed = 1000f;
-        bullet.LookAt(Vector2.Up);
+        // bullet.LookAt(Vector2.Up);
     }
 
     private void HideParticles()

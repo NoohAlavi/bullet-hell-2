@@ -39,7 +39,7 @@ public class Enemy : KinematicBody2D
         GetNode("/root/World/BulletHolder").AddChild(bullet);
         bullet.Position = this.Position;
         bullet.isEnemyBullet = true;
-        bullet.LookAt(_player.Position);
+        // bullet.LookAt(_player.Position);
         bullet.Speed = 250f;
 
         if (GD.Randf() > 0.5f)

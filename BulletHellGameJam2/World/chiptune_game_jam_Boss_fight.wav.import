@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chiptune_game_jam_Boss_fight.wav-ed06c515e8b0b64224e4384184036d4e.sample"
+
+[deps]
+
+source_file="res://World/chiptune_game_jam_Boss_fight.wav"
+dest_files=[ "res://.import/chiptune_game_jam_Boss_fight.wav-ed06c515e8b0b64224e4384184036d4e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

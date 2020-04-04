@@ -29,7 +29,7 @@ public class World : Node2D
     {
         foreach (Node2D s in GetTree().GetNodesInGroup("ScrollableItems"))
         {
-            s.Position = new Vector2(s.Position.x, s.Position.y + 1.5f);
+            s.Position = new Vector2(s.Position.x, s.Position.y + 3f);
         }
 
         if (GetNode("EnemyHolder").GetChildren().Count == 0)
