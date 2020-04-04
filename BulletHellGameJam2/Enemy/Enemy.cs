@@ -15,7 +15,7 @@ public class Enemy : KinematicBody2D
         _shootTimer = GetNode<Timer>("ShootTimer");
         _shootTimer.Connect("timeout", this, "Shoot");
 
-        _shootTimer.WaitTime = GD.Randf() + 0.1f;
+        _shootTimer.WaitTime = GD.Randf() + 0.25f;
 
         _bulletScene = ResourceLoader.Load<PackedScene>("res://Bullet/Bullet.tscn");
 
