@@ -13,6 +13,7 @@ public class Player : KinematicBody2D
 
     private Vector2 _screenSize;
     private ColorRect _collision;
+    private AnimationPlayer _anim;
 
     public CPUParticles2D HurtParticles;
     public Timer ParticlesTimer;
@@ -31,6 +32,8 @@ public class Player : KinematicBody2D
 
         ParticlesTimer = GetNode<Timer>("ParticlesTimer");
         ParticlesTimer.Connect("timeout", this, "HideParticles");
+
+        _anim = GetNode<AnimationPlayer>("AnimationPlayer");
     }
 
     public override void _Process(float delta)
@@ -68,6 +71,7 @@ public class Player : KinematicBody2D
             {
                 bullet.Collider.Show();
             }
+            _anim.Play("Focus");
         }
         else
         {
@@ -77,6 +81,7 @@ public class Player : KinematicBody2D
             {
                 bullet.Collider.Hide();
             }
+            _anim.Play("Idle");
         }
     }
 
