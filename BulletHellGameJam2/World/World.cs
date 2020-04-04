@@ -23,13 +23,21 @@ public class World : Node2D
         _camera = GetNode<Camera2D>("Camera2D");
     }
 
+    public override void _PhysicsProcess(float delta)
+    {
+        foreach (Node2D s in GetTree().GetNodesInGroup("ScrollableItems"))
+        {
+            s.Position = new Vector2(s.Position.x, s.Position.y + 1);
+        }
+    }
+
     private void SpawnEnemies()
     {
-        for (var i = 0; i < 3; i++)
+        for (var i = 0; i < 5; i++)
         {
             Enemy enemy = _enemyScene.Instance() as Enemy;
             GetNode("EnemyHolder").AddChild(enemy);
-            float randX = GD.Randi() % _screenSize.x;
+            float randX = GD.Randi() % _screenSize.x + 32;
             float randY = GD.Randi() % (_screenSize.y / 2);
             enemy.Position = new Vector2(randX, 0);
         }

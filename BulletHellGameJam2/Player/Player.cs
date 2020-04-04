@@ -4,16 +4,23 @@ using System;
 public class Player : KinematicBody2D
 {
     [Export] public Vector2 Velocity = new Vector2();
-    [Export] public float Speed = 200f;
+    [Export] public float MaxSpeed = 200f;
+
+    private float Speed;
 
     [Export] private PackedScene _bulletScene;
 
     private Vector2 _screenSize;
+    private ColorRect _collision;
 
     public override void _Ready()
     {
         _bulletScene = ResourceLoader.Load<PackedScene>("res://Bullet/Bullet.tscn");
         _screenSize = GetViewport().Size;
+
+        Speed = MaxSpeed;
+
+        _collision = GetNode<ColorRect>("Collider/ColorRect");
     }
 
     public override void _PhysicsProcess(float delta)
@@ -32,6 +39,17 @@ public class Player : KinematicBody2D
         if (Input.IsActionJustPressed("Shoot"))
         {
             Shoot();
+        }
+
+        if (Input.IsActionPressed("Focus"))
+        {
+            Speed = MaxSpeed / 2;
+            _collision.Show();
+        }
+        else
+        {
+            Speed = MaxSpeed;
+            _collision.Hide();
         }
     }
 
