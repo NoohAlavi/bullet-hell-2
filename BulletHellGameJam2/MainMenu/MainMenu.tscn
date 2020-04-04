@@ -22,6 +22,9 @@ margin_right = 193.0
 margin_bottom = 86.0
 rect_scale = Vector2( 4, 4 )
 text = "Antivirus"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Credits" type="Label" parent="."]
 margin_left = 8.0
@@ -37,7 +40,6 @@ margin_right = 253.0
 margin_bottom = 212.0
 rect_scale = Vector2( 2, 2 )
 text = "PLAY"
-flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
