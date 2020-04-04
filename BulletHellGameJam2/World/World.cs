@@ -29,7 +29,7 @@ public class World : Node2D
     {
         foreach (Node2D s in GetTree().GetNodesInGroup("ScrollableItems"))
         {
-            s.Position = new Vector2(s.Position.x, s.Position.y + 1);
+            s.Position = new Vector2(s.Position.x, s.Position.y + 1.5f);
         }
 
         if (GetNode("EnemyHolder").GetChildren().Count == 0)
@@ -45,7 +45,6 @@ public class World : Node2D
             Enemy enemy = _enemyScene.Instance() as Enemy;
             GetNode("EnemyHolder").AddChild(enemy);
             float randX = GD.Randi() % _screenSize.x + 32;
-            float randY = GD.Randi() % (_screenSize.y / 2);
             enemy.Position = new Vector2(randX, 0);
         }
     }

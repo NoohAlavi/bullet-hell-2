@@ -5,6 +5,7 @@ public class Player : KinematicBody2D
 {
     [Export] public Vector2 Velocity = new Vector2();
     [Export] public float MaxSpeed = 200f;
+    [Export] public float Health = 3f;
 
     private float Speed;
 
@@ -21,6 +22,15 @@ public class Player : KinematicBody2D
         Speed = MaxSpeed;
 
         _collision = GetNode<ColorRect>("Collider/ColorRect");
+    }
+
+    public override void _Process(float delta)
+    {
+        if (Health <= 0f)
+        {
+            GetTree().ChangeScene("res://GameOver/GameOver.tscn");
+        }
+        GetNode<Label>("/root/World/HUD/LivesLabel").Text = "LIVES: " + Health.ToString();
     }
 
     public override void _PhysicsProcess(float delta)
@@ -45,11 +55,19 @@ public class Player : KinematicBody2D
         {
             Speed = MaxSpeed / 2;
             _collision.Show();
+            foreach (Bullet bullet in GetNode("/root/World/BulletHolder").GetChildren())
+            {
+                bullet.Collider.Show();
+            }
         }
         else
         {
             Speed = MaxSpeed;
             _collision.Hide();
+            foreach (Bullet bullet in GetNode("/root/World/BulletHolder").GetChildren())
+            {
+                bullet.Collider.Hide();
+            }
         }
     }
 
@@ -58,5 +76,8 @@ public class Player : KinematicBody2D
         Bullet bullet = _bulletScene.Instance() as Bullet;
         GetNode("/root/World/BulletHolder").AddChild(bullet);
         bullet.Position = Position;
+        bullet.Direction = Vector2.Up;
+        bullet.Speed = 1000f;
+        bullet.LookAt(Vector2.Up);
     }
 }

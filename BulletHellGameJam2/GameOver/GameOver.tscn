@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GameOver/GameOver.cs" type="Script" id=1]
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 512.0
+margin_bottom = 600.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 96.0
+margin_top = 72.0
+margin_right = 176.0
+margin_bottom = 86.0
+rect_scale = Vector2( 4, 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "GAME OVER!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 176.0
+margin_top = 256.0
+margin_right = 257.0
+margin_bottom = 276.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "TRY AGAIN"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
