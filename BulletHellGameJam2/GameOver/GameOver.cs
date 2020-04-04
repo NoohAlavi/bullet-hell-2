@@ -11,6 +11,6 @@ public class GameOver : Control
 
     private void OnButtonPressed()
     {
-        GetTree().ChangeScene("res://World/World.tscn");
+        GetTree().ChangeScene("res://MainMenu/MainMenu.tscn");
     }
 }

@@ -1,0 +1,5 @@
+C:\Users\nooha\Documents\GitHub\bullet-hell-2\BulletHellGameJam2\.mono\temp\bin\Release\BulletHellGameJam2.dll
+C:\Users\nooha\Documents\GitHub\bullet-hell-2\BulletHellGameJam2\.mono\temp\bin\Release\BulletHellGameJam2.pdb
+C:\Users\nooha\Documents\GitHub\bullet-hell-2\BulletHellGameJam2\.mono\temp\obj\Release\BulletHellGameJam2.csprojAssemblyReference.cache
+C:\Users\nooha\Documents\GitHub\bullet-hell-2\BulletHellGameJam2\.mono\temp\obj\Release\BulletHellGameJam2.dll
+C:\Users\nooha\Documents\GitHub\bullet-hell-2\BulletHellGameJam2\.mono\temp\obj\Release\BulletHellGameJam2.pdb
