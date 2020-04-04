@@ -31,7 +31,7 @@ public class World : Node2D
             GetNode("EnemyHolder").AddChild(enemy);
             float randX = GD.Randi() % _screenSize.x;
             float randY = GD.Randi() % (_screenSize.y / 2);
-            enemy.Position = new Vector2(randX, randY);
+            enemy.Position = new Vector2(randX, 0);
         }
     }
 }
