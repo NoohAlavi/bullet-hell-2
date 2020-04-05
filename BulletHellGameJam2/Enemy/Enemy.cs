@@ -9,6 +9,12 @@ public class Enemy : KinematicBody2D
 
     private Vector2 _screenSize;
     private Player _player;
+    private PackedScene _orbScene;
+
+    public bool IsDead = false;
+
+    public AnimationPlayer Anim;
+    public Timer KillTimer;
 
     public override void _Ready()
     {
@@ -21,6 +27,12 @@ public class Enemy : KinematicBody2D
 
         _screenSize = GetViewport().Size;
         _player = GetNode<Player>("/root/World/Player");
+
+        Anim = GetNode<AnimationPlayer>("AnimationPlayer");
+        KillTimer = GetNode<Timer>("KillTimer");
+        KillTimer.Connect("timeout", this, "Remove");
+
+        _orbScene = ResourceLoader.Load<PackedScene>("res://Orb/Orb.tscn");
 
         Shoot();
     }
@@ -35,13 +47,24 @@ public class Enemy : KinematicBody2D
 
     private void Shoot()
     {
-        Bullet bullet = _bulletScene.Instance() as Bullet;
-        GetNode("/root/World/BulletHolder").AddChild(bullet);
-        bullet.Position = this.Position;
-        bullet.isEnemyBullet = true;
-        // bullet.LookAt(_player.Position);
-        bullet.Speed = 250f;
+        if (!IsDead)
+        {
+            Bullet bullet = _bulletScene.Instance() as Bullet;
+            GetNode("/root/World/BulletHolder").AddChild(bullet);
+            bullet.Position = this.Position;
+            bullet.isEnemyBullet = true;
+            // bullet.LookAt(_player.Position);
+            bullet.Speed = 250f;
 
-        bullet.Direction = Position.DirectionTo(_player.Position);
+            bullet.Direction = Position.DirectionTo(_player.Position);
+        }
+    }
+
+    private void Remove()
+    {
+        Orb orb = _orbScene.Instance() as Orb;
+        GetNode("/root/World/OrbHolder").AddChild(orb);
+        orb.Position = Position;
+        QueueFree();
     }
 }

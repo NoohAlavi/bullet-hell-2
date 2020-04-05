@@ -10,8 +10,6 @@ public class Bullet : Area2D
 
     [Export] public bool isEnemyBullet = false;
 
-    private PackedScene _orbScene;
-
     public override void _Ready()
     {
         Connect("body_entered", this, "OnBodyEntered");
@@ -22,8 +20,6 @@ public class Bullet : Area2D
         GetNode<Sprite>("Sprite").Modulate = new Color(r, g, b);
 
         Collider = GetNode<ColorRect>("Collider");
-
-        _orbScene = ResourceLoader.Load<PackedScene>("res://Orb/Orb.tscn");
     }
 
     public override void _PhysicsProcess(float delta)
@@ -35,11 +31,12 @@ public class Bullet : Area2D
     {
         if ((body is Enemy && !isEnemyBullet))
         {
-            Orb orb = _orbScene.Instance() as Orb;
-            GetNode("/root/World/OrbHolder").AddChild(orb);
-            orb.Position = body.Position;
-            body.QueueFree();
-            QueueFree();
+            Enemy e = body as Enemy;
+            e.IsDead = true;
+            e.Anim.Play("Uncorrupt");
+            e.KillTimer.Start();
+            CallDeferred("QueueFree", this);
+            // QueueFree();
         }
 
         if ((body is Player && isEnemyBullet))
