@@ -1,16 +1,18 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://MainMenu/MainMenu.cs" type="Script" id=1]
 [ext_resource path="res://Font.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Player/Idle animation.png" type="Texture" id=3]
+[ext_resource path="res://GameOverFont.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Enemy/Idle.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=3]
 size = 80
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 14
-font_data = ExtResource( 2 )
+size = 20
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 32
@@ -21,6 +23,95 @@ font_data = ExtResource( 2 )
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
 
+[sub_resource type="Animation" id=6]
+resource_name = "Anim"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Idle2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Idle3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Idle4:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Idle5:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Idle6:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Idle7:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 26 ]
+}
+
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,8 +121,10 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 512.0
-margin_bottom = 600.0
+margin_left = 8.0
+margin_top = -16.0
+margin_right = 520.0
+margin_bottom = 584.0
 color = Color( 0, 0.0627451, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -59,12 +152,15 @@ __meta__ = {
 }
 
 [node name="Credits" type="Label" parent="."]
-margin_left = 8.0
-margin_top = 576.0
-margin_right = 302.0
-margin_bottom = 590.0
+margin_left = 16.0
+margin_top = 568.0
+margin_right = 474.0
+margin_bottom = 582.0
 custom_fonts/font = SubResource( 5 )
 text = "Programmed by Nooh Alavi, Art by waller3000, music by Leftlane"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="Button" parent="."]
 margin_left = 216.0
@@ -78,3 +174,56 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Idle" type="Sprite" parent="."]
+position = Vector2( 56, 256 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+hframes = 27
+frame = 17
+
+[node name="Idle2" type="Sprite" parent="."]
+position = Vector2( 432, 208 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+hframes = 27
+frame = 17
+
+[node name="Idle3" type="Sprite" parent="."]
+position = Vector2( 320, 456 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+hframes = 27
+frame = 17
+
+[node name="Idle4" type="Sprite" parent="."]
+position = Vector2( 128, 48.0001 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+hframes = 27
+frame = 17
+
+[node name="Idle5" type="Sprite" parent="."]
+position = Vector2( 88, 424 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+hframes = 27
+frame = 17
+
+[node name="Idle6" type="Sprite" parent="."]
+position = Vector2( 440, 56 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+hframes = 27
+frame = 17
+
+[node name="Idle7" type="Sprite" parent="."]
+position = Vector2( 440, 376 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+hframes = 27
+frame = 17
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Anim"
+anims/Anim = SubResource( 6 )
