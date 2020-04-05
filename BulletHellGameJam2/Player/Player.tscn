@@ -47,7 +47,7 @@ _bulletScene = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 hframes = 27
-frame = 24
+frame = 21
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -16 )

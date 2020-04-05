@@ -51,6 +51,12 @@ public class Player : KinematicBody2D
         // GetNode<Label>("/root/World/HUD/LivesLabel").Text = "LIVES: " + Health.ToString();
         GetNode<Sprite>("/root/World/HUD/LivesBar").Frame = Convert.ToInt32(3f - Health);
         GetNode<TextureProgress>("/root/World/HUD/XPBar").Value = XP;
+
+        if (XP >= 100f)
+        {
+            XP = 0f;
+            NumShots++;
+        }
     }
 
     public override void _PhysicsProcess(float delta)
@@ -97,13 +103,24 @@ public class Player : KinematicBody2D
         }
     }
 
-    private void Shoot()
+    async private void Shoot()
     {
-        Bullet bullet = _bulletScene.Instance() as Bullet;
-        GetNode("/root/World/BulletHolder").AddChild(bullet);
-        bullet.Position = Position;
-        bullet.Direction = Vector2.Up;
-        bullet.Speed = 1000f;
+        for (int i = 0; i < NumShots; i++)
+        {
+
+            Bullet bullet = _bulletScene.Instance() as Bullet;
+            GetNode("/root/World/BulletHolder").AddChild(bullet);
+            bullet.Position = Position;
+            bullet.Direction = Vector2.Up;
+            bullet.Speed = 1000f;
+
+            // float angle = -30 / 2 + i * 30 / (NumShots - 1);
+
+            // bullet.Direction = new Vector2(angle, -1f);
+
+            await ToSignal(GetTree().CreateTimer(.25f), "timeout");
+        }
+
     }
 
     private void HideParticles()
