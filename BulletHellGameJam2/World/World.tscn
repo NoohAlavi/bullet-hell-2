@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Background 2.png" type="Texture" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://World/Heart sprite.png" type="Texture" id=5]
 [ext_resource path="res://World/Xp Bar full.png" type="Texture" id=6]
 [ext_resource path="res://World/Xp Bar Empty.png" type="Texture" id=7]
+[ext_resource path="res://Font.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 8 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "scroll"
@@ -89,33 +94,33 @@ position = Vector2( 256, 296 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="LivesLabel" type="Label" parent="HUD"]
-visible = false
-margin_left = 8.0
-margin_top = 544.0
-margin_right = 72.0
-margin_bottom = 568.0
-rect_scale = Vector2( 2, 2 )
-text = "LIVES: 3"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="LivesBar" type="Sprite" parent="HUD"]
-position = Vector2( 64, 536 )
+position = Vector2( 64, 504 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 hframes = 4
 
 [node name="XPBar" type="TextureProgress" parent="HUD"]
 margin_left = 8.0
-margin_top = 560.0
+margin_top = 528.0
 margin_right = 72.0
-margin_bottom = 624.0
+margin_bottom = 592.0
 rect_scale = Vector2( 2, 2 )
 value = 50.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelLabel" type="Label" parent="HUD"]
+margin_left = 13.9094
+margin_top = 560.418
+margin_right = 80.9094
+margin_bottom = 584.418
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.682353, 0.623529, 0, 1 )
+text = "Level: 1"
 __meta__ = {
 "_edit_use_anchors_": false
 }

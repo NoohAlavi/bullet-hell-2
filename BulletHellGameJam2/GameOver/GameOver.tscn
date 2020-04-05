@@ -199,7 +199,7 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 shortcut = SubResource( 2 )
-text = "Click to Restart Computer"
+text = "Click to Restart"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false

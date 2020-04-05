@@ -10,6 +10,7 @@ public class Player : KinematicBody2D
     [Export] public float XP = 0f;
 
     private float Speed;
+    private float Level = 1f;
 
     [Export] private PackedScene _bulletScene;
 
@@ -48,14 +49,17 @@ public class Player : KinematicBody2D
         {
             GetTree().ChangeScene("res://GameOver/GameOver.tscn");
         }
-        // GetNode<Label>("/root/World/HUD/LivesLabel").Text = "LIVES: " + Health.ToString();
+        GetNode<Label>("/root/World/HUD/LevelLabel").Text = "Level " + Level.ToString();
         GetNode<Sprite>("/root/World/HUD/LivesBar").Frame = Convert.ToInt32(3f - Health);
         GetNode<TextureProgress>("/root/World/HUD/XPBar").Value = XP;
 
         if (XP >= 100f)
         {
             XP = 0f;
-            NumShots++;
+            Level++;
+            // NumShots++;
+            MaxSpeed += 50f;
+            Health = 3f;
         }
     }
 
