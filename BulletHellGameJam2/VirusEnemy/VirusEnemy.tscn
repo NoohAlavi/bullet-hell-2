@@ -1,14 +1,42 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://VirusEnemy/Bug_Charge.png" type="Texture" id=1]
+[ext_resource path="res://VirusEnemy/VirusEnemy.cs" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
+radius = 8.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Charge"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 19 ]
+}
 
 [node name="VirusEnemy" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+scale = Vector2( 2.96, 1 )
 enabled = true
 cast_to = Vector2( 0, 25 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Charge = SubResource( 2 )

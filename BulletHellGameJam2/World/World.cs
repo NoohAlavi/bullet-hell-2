@@ -4,6 +4,7 @@ using System;
 public class World : Node2D
 {
     private PackedScene _enemyScene;
+    private PackedScene _virusScene;
     private Timer _spawnTimer;
 
     private Vector2 _screenSize;
@@ -12,7 +13,11 @@ public class World : Node2D
 
     public override void _Ready()
     {
+
+        GD.Randomize();
+
         _enemyScene = ResourceLoader.Load<PackedScene>("res://Enemy/Enemy.tscn");
+        _virusScene = ResourceLoader.Load<PackedScene>("res://VirusEnemy/VirusEnemy.tscn");
 
         _spawnTimer = GetNode<Timer>("SpawnTimer");
         _spawnTimer.Connect("timeout", this, "SpawnEnemies");
@@ -46,6 +51,10 @@ public class World : Node2D
             GetNode("EnemyHolder").AddChild(enemy);
             float randX = GD.Randi() % _screenSize.x + 32;
             enemy.Position = new Vector2(randX, 0);
+        }
+        if (_player.Kills >= 100f && GD.Randf() < 0.1f)
+        {
+
         }
     }
 }
