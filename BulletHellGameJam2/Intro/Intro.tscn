@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GameOverFont.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Intro/Intro.cs" type="Script" id=2]
+[ext_resource path="res://MainMenu/Untitled_song.wav" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -46,11 +47,11 @@ virus, before it completely takes over your PC, and
 renders it useless... forever. Help the antivirus 
 navigate its way through the inner workings of your 
 computer,  while uncorrupting files along the way. 
-Collect XP Orbs to update your antivirus, making it 
-faster and stronger. The virus however... it senses 
-an alien presence, andit wants to eliminate this alien 
-threat. Be careful and hurry up -  your computer depends 
-on it.
+Collect Uncorrupted files to update your antivirus, 
+making it faster and healing all damage done to it. 
+The virus however... it senses an alien presence, 
+and it wants to eliminate it - eliminate you. Be careful 
+and hurry up -  your computer depends on it.
 
 Controls:
 
@@ -73,3 +74,7 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true

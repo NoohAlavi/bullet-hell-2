@@ -8,19 +8,19 @@ public class Player : KinematicBody2D
     [Export] public float Health = 3f;
     [Export] public float NumShots = 1f;
     [Export] public float XP = 0f;
-
-    private float Speed;
-    private float Level = 1f;
-
-    [Export] private PackedScene _bulletScene;
-
-    private Vector2 _screenSize;
-    private ColorRect _collision;
-    private AnimationPlayer _anim;
+    [Export] public float Kills = 0f;
 
     public CPUParticles2D HurtParticles;
     public Timer ParticlesTimer;
 
+    [Export] private PackedScene _bulletScene;
+
+    private float Speed;
+    private float Level = 1f;
+
+    private Vector2 _screenSize;
+    private ColorRect _collision;
+    private AnimationPlayer _anim;
     private Sprite _background;
 
     public override void _Ready()
@@ -50,6 +50,7 @@ public class Player : KinematicBody2D
             GetTree().ChangeScene("res://GameOver/GameOver.tscn");
         }
         GetNode<Label>("/root/World/HUD/LevelLabel").Text = "Level " + Level.ToString();
+        GetNode<Label>("/root/World/HUD/KillsLabel").Text = Kills.ToString() + " Kills";
         GetNode<Sprite>("/root/World/HUD/LivesBar").Frame = Convert.ToInt32(3f - Health);
         GetNode<TextureProgress>("/root/World/HUD/XPBar").Value = XP;
 

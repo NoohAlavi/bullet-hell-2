@@ -27,6 +27,14 @@ public class Bullet : Area2D
         Position += Direction * Speed * delta;
     }
 
+    public override void _Process(float delta)
+    {
+        if (Position.y < 0f || Position.y > 600)
+        {
+            QueueFree();
+        }
+    }
+
     public void OnBodyEntered(PhysicsBody2D body)
     {
         if ((body is Enemy && !isEnemyBullet))
@@ -36,7 +44,7 @@ public class Bullet : Area2D
             e.Anim.Play("Uncorrupt");
             e.KillTimer.Start();
             CallDeferred("QueueFree", this);
-            // QueueFree();
+            GetNode<Player>("/root/World/Player").Kills++;
         }
 
         if ((body is Player && isEnemyBullet))
