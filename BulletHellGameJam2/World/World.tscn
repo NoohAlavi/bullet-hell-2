@@ -147,6 +147,7 @@ anims/scroll = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -20.0
 autoplay = true
 
 [node name="OrbHolder" type="Node" parent="."]
