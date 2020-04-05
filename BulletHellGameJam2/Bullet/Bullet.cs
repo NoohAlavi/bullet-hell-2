@@ -50,6 +50,12 @@ public class Bullet : Area2D
             }
         }
 
+        if (body.IsInGroup("VirusEnemies") && !isEnemyBullet)
+        {
+            body.QueueFree();
+            QueueFree();
+        }
+
         if ((body is Player && isEnemyBullet))
         {
             Player p = body as Player;

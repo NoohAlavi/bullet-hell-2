@@ -52,9 +52,12 @@ public class World : Node2D
             float randX = GD.Randi() % _screenSize.x + 32;
             enemy.Position = new Vector2(randX, 0);
         }
-        if (_player.Kills >= 100f && GD.Randf() < 0.1f)
+        if (_player.Kills >= 0f && GD.Randf() < 0.33f)
         {
-
+            VirusEnemy v = _virusScene.Instance() as VirusEnemy;
+            GetNode("EnemyHolder").AddChild(v);
+            float randX = GD.Randi() % _screenSize.x + 32;
+            v.Position = new Vector2(randX, 0);
         }
     }
 }

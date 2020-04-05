@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class VirusEnemy : KinematicBody2D
+public class VirusEnemy : Area2D
 {
     [Export] private float _speed = 200f;
     private Player _player;
@@ -17,14 +17,17 @@ public class VirusEnemy : KinematicBody2D
         _anim = GetNode<AnimationPlayer>("AnimationPlayer");
         _anim.Play("Charge");
 
-        _direction = Position.DirectionTo(_player.Position);
-        _rayCast.CastTo = Position.DirectionTo(_player.Position) * 25f;
-        LookAt(_player.Position);
-        RotationDegrees += 270f;
+        Connect("body_entered", this, "OnBodyEntered");
     }
 
     public override void _PhysicsProcess(float delta)
     {
+
+        _direction = Position.DirectionTo(_player.Position);
+        _rayCast.CastTo = Position.DirectionTo(_player.Position) * 25f;
+        LookAt(_player.Position);
+        RotationDegrees += 270f;
+
         Position += _direction * delta * _speed;
 
         if (Position.x < 0 || Position.x > 512 || Position.y > 600 || Position.y < 0f)
@@ -32,13 +35,21 @@ public class VirusEnemy : KinematicBody2D
             QueueFree();
         }
 
-        if (_rayCast.IsColliding())
+        // if (_rayCast.IsColliding())
+        // {
+        //     Node collider = _rayCast.GetCollider() as Node;
+        //     if (collider is Player)
+        //     {
+        //         GetTree().ChangeScene("res://GameOver/GameOver.tscn");
+        //     }
+        // }
+    }
+
+    private void OnBodyEntered(PhysicsBody2D body)
+    {
+        if (body is Player)
         {
-            Node collider = _rayCast.GetCollider() as Node;
-            if (collider is Player)
-            {
-                GetTree().ChangeScene("res://GameOver/GameOver.tscn");
-            }
+            GetTree().ChangeScene("res://GameOver/GameOver.tscn");
         }
     }
 }
