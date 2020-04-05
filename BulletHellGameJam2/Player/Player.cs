@@ -76,6 +76,7 @@ public class Player : KinematicBody2D
                 bullet.Collider.Show();
             }
             _anim.Play("Focus");
+            GetNode<Sprite>("/root/World/Background").Modulate = new Color(0, 0, 0);
         }
         else
         {
@@ -86,6 +87,7 @@ public class Player : KinematicBody2D
                 bullet.Collider.Hide();
             }
             _anim.Play("Idle");
+            GetNode<Sprite>("/root/World/Background").Modulate = new Color(1, 1, 1);
         }
     }
 

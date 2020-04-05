@@ -13,7 +13,7 @@ resource_name = "scroll"
 length = 1.5
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background 1:position")
+tracks/0/path = NodePath("Background:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -28,7 +28,7 @@ tracks/0/keys = {
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="Background 1" type="Sprite" parent="."]
+[node name="Background" type="Sprite" parent="."]
 position = Vector2( 253.846, 501.999 )
 texture = ExtResource( 2 )
 
@@ -85,7 +85,6 @@ autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 256, 296 )
-current = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

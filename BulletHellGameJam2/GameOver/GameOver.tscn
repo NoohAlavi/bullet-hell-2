@@ -1,21 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://GameOver/GameOver.cs" type="Script" id=1]
-[ext_resource path="res://Font.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Enemy/Idle.png" type="Texture" id=3]
-
-[sub_resource type="DynamicFont" id=3]
-size = 60
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 32
-font_data = ExtResource( 2 )
-
-[sub_resource type="InputEventJoypadButton" id=1]
-
-[sub_resource type="ShortCut" id=2]
-shortcut = SubResource( 1 )
+[ext_resource path="res://GameOverFont.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="Animation" id=5]
 resource_name = "Anim"
@@ -94,6 +81,23 @@ tracks/5/keys = {
 "values": [ 0, 26 ]
 }
 
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="InputEventJoypadButton" id=1]
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 128
+font_data = ExtResource( 4 )
+
 [node name="GameOver" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -105,34 +109,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 512.0
 margin_bottom = 600.0
-color = Color( 1, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="."]
-margin_left = 96.0
-margin_top = 72.0
-margin_right = 176.0
-margin_bottom = 86.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "GAME OVER!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="."]
-margin_left = 176.0
-margin_top = 256.0
-margin_right = 257.0
-margin_bottom = 276.0
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-shortcut = SubResource( 2 )
-text = "TRY AGAIN"
-flat = true
+color = Color( 0, 0.0627451, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -142,6 +119,7 @@ autoplay = "Anim"
 anims/Anim = SubResource( 5 )
 
 [node name="Idle" type="Sprite" parent="."]
+visible = false
 position = Vector2( 96, 360 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
@@ -149,6 +127,7 @@ hframes = 27
 frame = 6
 
 [node name="Idle2" type="Sprite" parent="."]
+visible = false
 position = Vector2( 448, 184 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
@@ -156,6 +135,7 @@ hframes = 27
 frame = 6
 
 [node name="Idle3" type="Sprite" parent="."]
+visible = false
 position = Vector2( 408, 504 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
@@ -163,6 +143,7 @@ hframes = 27
 frame = 6
 
 [node name="Idle4" type="Sprite" parent="."]
+visible = false
 position = Vector2( 80, 184 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
@@ -170,6 +151,7 @@ hframes = 27
 frame = 6
 
 [node name="Idle5" type="Sprite" parent="."]
+visible = false
 position = Vector2( 168, 520 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
@@ -177,8 +159,59 @@ hframes = 27
 frame = 6
 
 [node name="Idle6" type="Sprite" parent="."]
+visible = false
 position = Vector2( 456, 48 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 hframes = 27
 frame = 6
+
+[node name="Label" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 104.0
+margin_right = 524.0
+margin_bottom = 374.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "A problem has been detected and Windows
+has been shut down to prevent damage to
+your computer.
+
+If this is the first time that you have
+seen this error, then restart your 
+computer.
+
+Make sure new hardware and software are
+properly installed.
+
+If errors continue, then you suck at this
+game."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 96.0
+margin_top = 424.0
+margin_right = 424.0
+margin_bottom = 461.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+shortcut = SubResource( 2 )
+text = "Click to Restart Computer"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 122.0
+margin_bottom = 88.0
+custom_fonts/font = SubResource( 6 )
+text = ":("
+__meta__ = {
+"_edit_use_anchors_": false
+}
