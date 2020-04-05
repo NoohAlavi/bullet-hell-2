@@ -40,11 +40,14 @@ public class Bullet : Area2D
         if ((body is Enemy && !isEnemyBullet))
         {
             Enemy e = body as Enemy;
-            e.IsDead = true;
-            e.Anim.Play("Uncorrupt");
-            e.KillTimer.Start();
-            CallDeferred("QueueFree", this);
-            GetNode<Player>("/root/World/Player").Kills++;
+            if (!e.IsDead)
+            {
+                e.IsDead = true;
+                e.Anim.Play("Uncorrupt");
+                e.KillTimer.Start();
+                CallDeferred("QueueFree", this);
+                GetNode<Player>("/root/World/Player").Kills++;
+            }
         }
 
         if ((body is Player && isEnemyBullet))
