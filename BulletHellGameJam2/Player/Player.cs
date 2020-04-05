@@ -20,6 +20,8 @@ public class Player : KinematicBody2D
     public CPUParticles2D HurtParticles;
     public Timer ParticlesTimer;
 
+    private Sprite _background;
+
     public override void _Ready()
     {
         _bulletScene = ResourceLoader.Load<PackedScene>("res://Bullet/Bullet.tscn");
@@ -36,6 +38,8 @@ public class Player : KinematicBody2D
         ParticlesTimer.Connect("timeout", this, "HideParticles");
 
         _anim = GetNode<AnimationPlayer>("AnimationPlayer");
+
+        _background = GetNode<Sprite>("/root/World/Background");
     }
 
     public override void _Process(float delta)
@@ -76,7 +80,8 @@ public class Player : KinematicBody2D
                 bullet.Collider.Show();
             }
             _anim.Play("Focus");
-            GetNode<Sprite>("/root/World/Background").Texture = ResourceLoader.Load<Texture>("res://World/Background 1.png");
+            _background.Texture = ResourceLoader.Load<Texture>("res://World/Background 1.png");
+            _background.Modulate = new Color(1, 1, 1);
         }
         else
         {
@@ -87,7 +92,8 @@ public class Player : KinematicBody2D
                 bullet.Collider.Hide();
             }
             _anim.Play("Idle");
-            GetNode<Sprite>("/root/World/Background").Texture = ResourceLoader.Load<Texture>("res://World/Background 2.png");
+            _background.Texture = ResourceLoader.Load<Texture>("res://World/Background 2.png");
+            _background.Modulate = new Color(.5f, .5f, .5f);
         }
     }
 
