@@ -13,7 +13,7 @@ public class Orb : Area2D
         if (body is Player)
         {
             Player p = body as Player;
-            p.XP += 5f;
+            p.XP += 10f;
             QueueFree();
         }
     }

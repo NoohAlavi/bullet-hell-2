@@ -59,7 +59,7 @@ public class Player : KinematicBody2D
             XP = 0f;
             Level++;
             // NumShots++;
-            MaxSpeed += 50f;
+            MaxSpeed += 25f;
             Health = 3f;
         }
     }
