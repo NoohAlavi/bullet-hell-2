@@ -10,6 +10,6 @@ public class MainMenu : Control
 
     private void OnButtonClicked()
     {
-        GetTree().ChangeScene("res://World/World.tscn");
+        GetTree().ChangeScene("res://Intro/Intro.tscn");
     }
 }

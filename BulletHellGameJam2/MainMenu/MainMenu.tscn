@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://MainMenu/MainMenu.cs" type="Script" id=1]
 [ext_resource path="res://Font.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Player/Idle animation.png" type="Texture" id=3]
 [ext_resource path="res://GameOverFont.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Enemy/Idle.png" type="Texture" id=5]
+[ext_resource path="res://MainMenu/Untitled_song.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=3]
 size = 80
@@ -225,3 +226,7 @@ frame = 17
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Anim"
 anims/Anim = SubResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
