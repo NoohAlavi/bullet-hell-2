@@ -46,7 +46,7 @@ public class Bullet : Area2D
                 e.IsDead = true;
                 e.Anim.Play("Uncorrupt");
                 e.KillTimer.Start();
-                CallDeferred("QueueFree");
+                QueueFree();
                 GetNode<Player>("/root/World/Player").Kills++;
             }
         }

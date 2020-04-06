@@ -3,7 +3,7 @@ using System;
 
 public class VirusEnemy : Area2D
 {
-    [Export] private float _speed = 200f;
+    [Export] private float _speed = 300f;
     private Player _player;
     private AnimationPlayer _anim;
     private Vector2 _direction;
