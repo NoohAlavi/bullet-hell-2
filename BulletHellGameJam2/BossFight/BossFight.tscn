@@ -6,7 +6,7 @@
 [ext_resource path="res://World/Background 2.png" type="Texture" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 
-[node name="BossFight" type="Node2D"]
+[node name="World" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
 modulate = Color( 0.317647, 0.317647, 0.317647, 1 )

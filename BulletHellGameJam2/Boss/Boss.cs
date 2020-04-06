@@ -21,12 +21,12 @@ public class Boss : KinematicBody2D
         _speed = _maxSpeed;
 
 
-        Shoot();
+        GetNode<Timer>("ShootTimer").Connect("timeout", this, "Shoot");
     }
 
     public override void _Process(float delta)
     {
-        GetNode<TextureProgress>("../HUD/BossHealthBar").Value = Health;
+        // GetNode<TextureProgress>("../HUD/BossHealthBar").Value = Health;
 
         if (Health <= 0f)
         {
@@ -49,7 +49,7 @@ public class Boss : KinematicBody2D
         }
     }
 
-    async private void Shoot()
+    private void Shoot()
     {
         Bullet b = _bulletScene.Instance() as Bullet;
         GetNode("../BulletHolder").AddChild(b);
@@ -57,7 +57,5 @@ public class Boss : KinematicBody2D
         b.Direction = Position.DirectionTo(_player.Position);
         b.Speed = 250f;
         b.isEnemyBullet = true;
-        await ToSignal(GetTree().CreateTimer(.25f), "timeout");
-        Shoot();
     }
 }

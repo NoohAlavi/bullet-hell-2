@@ -18,6 +18,9 @@ public class Enemy : KinematicBody2D
 
     public override void _Ready()
     {
+
+        GD.Randomize();
+
         _shootTimer = GetNode<Timer>("ShootTimer");
         _shootTimer.Connect("timeout", this, "Shoot");
 

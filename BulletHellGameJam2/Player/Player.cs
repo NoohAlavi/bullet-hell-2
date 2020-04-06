@@ -16,7 +16,7 @@ public class Player : KinematicBody2D
     [Export] private PackedScene _bulletScene;
 
     private float Speed;
-    private float Level = 1f;
+    public float Level = 1f;
 
     private Vector2 _screenSize;
     private ColorRect _collision;
@@ -41,6 +41,13 @@ public class Player : KinematicBody2D
         _anim = GetNode<AnimationPlayer>("AnimationPlayer");
 
         _background = GetNode<Sprite>("../Background");
+
+        PlayerInfo playerStats = GetNode<PlayerInfo>("/root/PlayerInfo");
+        MaxSpeed = playerStats.Speed;
+        Health = playerStats.Health;
+        XP = playerStats.XP;
+        Level = playerStats.Level;
+        Kills = playerStats.Kills;
     }
 
     public override void _Process(float delta)
@@ -65,7 +72,7 @@ public class Player : KinematicBody2D
 
         if (Kills >= 20f)
         {
-            GetTree().ChangeScene("res://Boss/Boss.tscn");
+            // GetTree().ChangeScene("res://BossFight/BossFight.tscn");
         }
     }
 
@@ -113,7 +120,7 @@ public class Player : KinematicBody2D
         }
     }
 
-    async private void Shoot()
+    private void Shoot()
     {
         for (int i = 0; i < NumShots; i++)
         {
@@ -128,7 +135,7 @@ public class Player : KinematicBody2D
 
             // bullet.Direction = new Vector2(angle, -1f);
 
-            await ToSignal(GetTree().CreateTimer(.25f), "timeout");
+            // await ToSignal(GetTree().CreateTimer(.25f), "timeout");
         }
 
     }
