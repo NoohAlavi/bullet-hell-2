@@ -41,3 +41,7 @@ anims/Idle = SubResource( 1 )
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.25
 autostart = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true

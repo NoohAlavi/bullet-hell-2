@@ -12,25 +12,29 @@ public class Boss : KinematicBody2D
     private Player _player;
 
     private PackedScene _bulletScene;
+    private PackedScene _virusScene;
 
     public override void _Ready()
     {
         _player = GetNode<Player>("../Player");
 
         _bulletScene = ResourceLoader.Load<PackedScene>("res://Bullet/Bullet.tscn");
+        _virusScene = ResourceLoader.Load<PackedScene>("res://VirusEnemy/VirusEnemy.tscn");
+
         _speed = _maxSpeed;
 
 
         GetNode<Timer>("ShootTimer").Connect("timeout", this, "Shoot");
+        GetNode<Timer>("SpawnTimer").Connect("timeout", this, "Spawn");
     }
 
     public override void _Process(float delta)
     {
-        // GetNode<TextureProgress>("../HUD/BossHealthBar").Value = Health;
+        GetNode<TextureProgress>("../HUD/BossHealthBar").Value = Health;
 
         if (Health <= 0f)
         {
-            QueueFree();
+            GetTree().ChangeScene("res://Win/Win.tscn");
         }
     }
 
@@ -57,5 +61,14 @@ public class Boss : KinematicBody2D
         b.Direction = Position.DirectionTo(_player.Position);
         b.Speed = 250f;
         b.isEnemyBullet = true;
+    }
+
+    private void Spawn()
+    {
+        VirusEnemy v = _virusScene.Instance() as VirusEnemy;
+        GetNode("../EnemyHolder").AddChild(v);
+        float randX = GD.Randi() % 512;
+        float randY = GD.Randi() % 32;
+        v.Position = new Vector2(randX, randY);
     }
 }

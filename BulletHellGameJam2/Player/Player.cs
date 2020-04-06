@@ -42,12 +42,12 @@ public class Player : KinematicBody2D
 
         _background = GetNode<Sprite>("../Background");
 
-        PlayerInfo playerStats = GetNode<PlayerInfo>("/root/PlayerInfo");
-        MaxSpeed = playerStats.Speed;
-        Health = playerStats.Health;
-        XP = playerStats.XP;
-        Level = playerStats.Level;
-        Kills = playerStats.Kills;
+        // PlayerInfo playerStats = GetNode<PlayerInfo>("/root/PlayerInfo");
+        // MaxSpeed = playerStats.Speed;
+        // Health = playerStats.Health;
+        // XP = playerStats.XP;
+        // Level = playerStats.Level;
+        // Kills = playerStats.Kills;
     }
 
     public override void _Process(float delta)

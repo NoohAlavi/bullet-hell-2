@@ -10,7 +10,7 @@ public class World : Node2D
     private Vector2 _screenSize;
     private Player _player;
     private Camera2D _camera;
-    private bool _bossSpawned = false;
+    private bool _isBossSpawned = false;
     private PackedScene _bossScene;
 
     public override void _Ready()
@@ -39,6 +39,8 @@ public class World : Node2D
         {
             SpawnBoss();
         }
+
+        GetNode<TextureProgress>("HUD/BossHealthBar").Visible = _isBossSpawned;
     }
 
     public override void _PhysicsProcess(float delta)
@@ -56,7 +58,7 @@ public class World : Node2D
 
     private void SpawnEnemies()
     {
-        if (!_bossSpawned)
+        if (!_isBossSpawned)
         {
             for (var i = 0; i < 5; i++)
             {
@@ -77,9 +79,9 @@ public class World : Node2D
 
     private void SpawnBoss()
     {
-        if (!_bossSpawned)
+        if (!_isBossSpawned)
         {
-            _bossSpawned = true;
+            _isBossSpawned = true;
             foreach (Node e in GetNode("EnemyHolder").GetChildren())
             {
                 e.QueueFree();

@@ -60,10 +60,11 @@ __meta__ = {
 }
 
 [node name="BossHealthBar" type="TextureProgress" parent="."]
+margin_left = 8.0
 margin_top = 16.0
-margin_right = 64.0
+margin_right = 72.0
 margin_bottom = 80.0
-rect_scale = Vector2( 8, 0.64 )
+rect_scale = Vector2( 7.72898, 0.64 )
 max_value = 300.0
 value = 300.0
 texture_under = ExtResource( 5 )
