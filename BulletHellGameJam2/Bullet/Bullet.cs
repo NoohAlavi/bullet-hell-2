@@ -59,6 +59,13 @@ public class Bullet : Area2D
             p.ParticlesTimer.Start();
             QueueFree();
         }
+
+        if (body is Boss && !isEnemyBullet)
+        {
+            Boss b = body as Boss;
+            b.Health -= 2.5f;
+            QueueFree();
+        }
     }
 
     private void OnAreaEntered(Area2D area)

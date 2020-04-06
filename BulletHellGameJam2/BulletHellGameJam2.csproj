@@ -60,6 +60,7 @@
     <Compile Include="Intro\Intro.cs" />
     <Compile Include="MainMenu\MainMenu.cs" />
     <Compile Include="Orb\Orb.cs" />
+    <Compile Include="PlayerInfo.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VirusEnemy\VirusEnemy.cs" />

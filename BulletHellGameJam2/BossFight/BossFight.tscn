@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Boss/Boss.tscn" type="PackedScene" id=2]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/Background 2.png" type="Texture" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
 
 [node name="BossFight" type="Node2D"]
 
@@ -13,11 +14,27 @@ position = Vector2( 256, 496 )
 texture = ExtResource( 4 )
 
 [node name="Boss" parent="." instance=ExtResource( 2 )]
-position = Vector2( 256, 128 )
+position = Vector2( 256, 176 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 272, 528 )
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
+
+[node name="BossHealthBar" type="TextureProgress" parent="HUD"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_scale = Vector2( 7.4, 0.52 )
+max_value = 300.0
+value = 300.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 5 )
+tint_under = Color( 0, 0, 0, 1 )
+tint_progress = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BulletHolder" type="Node" parent="."]

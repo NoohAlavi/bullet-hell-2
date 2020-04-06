@@ -62,6 +62,11 @@ public class Player : KinematicBody2D
             MaxSpeed += 25f;
             Health = 3f;
         }
+
+        if (Kills >= 20f)
+        {
+            GetTree().ChangeScene("res://Boss/Boss.tscn");
+        }
     }
 
     public override void _PhysicsProcess(float delta)
