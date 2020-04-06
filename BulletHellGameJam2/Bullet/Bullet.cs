@@ -13,6 +13,7 @@ public class Bullet : Area2D
     public override void _Ready()
     {
         Connect("body_entered", this, "OnBodyEntered");
+        Connect("area_entered", this, "OnAreaEntered");
         GD.Randomize();
         float r = GD.Randf();
         float g = GD.Randf();
@@ -45,15 +46,9 @@ public class Bullet : Area2D
                 e.IsDead = true;
                 e.Anim.Play("Uncorrupt");
                 e.KillTimer.Start();
-                CallDeferred("QueueFree", this);
+                CallDeferred("QueueFree");
                 GetNode<Player>("/root/World/Player").Kills++;
             }
-        }
-
-        if (body.IsInGroup("VirusEnemies") && !isEnemyBullet)
-        {
-            body.QueueFree();
-            QueueFree();
         }
 
         if ((body is Player && isEnemyBullet))
@@ -63,6 +58,15 @@ public class Bullet : Area2D
             p.HurtParticles.Emitting = true;
             p.ParticlesTimer.Start();
             QueueFree();
+        }
+    }
+
+    private void OnAreaEntered(Area2D area)
+    {
+        if (area is VirusEnemy && !isEnemyBullet)
+        {
+            area.QueueFree();
+            SetDeferred("QueueFree", this);
         }
     }
 }
