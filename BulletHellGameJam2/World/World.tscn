@@ -1,21 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Background 2.png" type="Texture" id=2]
 [ext_resource path="res://World/play-music.wav" type="AudioStream" id=3]
 [ext_resource path="res://World/World.cs" type="Script" id=4]
-[ext_resource path="res://World/Heart sprite.png" type="Texture" id=5]
-[ext_resource path="res://World/Xp Bar full.png" type="Texture" id=6]
-[ext_resource path="res://World/Xp Bar Empty.png" type="Texture" id=7]
-[ext_resource path="res://Font.ttf" type="DynamicFontData" id=8]
-
-[sub_resource type="DynamicFont" id=2]
-size = 24
-font_data = ExtResource( 8 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 24
-font_data = ExtResource( 8 )
+[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "scroll"
@@ -96,50 +85,7 @@ autostart = true
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 256, 296 )
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="LivesBar" type="Sprite" parent="HUD"]
-position = Vector2( 64, 480 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 5 )
-hframes = 4
-
-[node name="XPBar" type="TextureProgress" parent="HUD"]
-margin_left = 8.0
-margin_top = 504.0
-margin_right = 72.0
-margin_bottom = 568.0
-rect_scale = Vector2( 2, 2 )
-value = 50.0
-texture_under = ExtResource( 7 )
-texture_progress = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LevelLabel" type="Label" parent="HUD"]
-margin_left = 16.0
-margin_top = 536.0
-margin_right = 83.0
-margin_bottom = 560.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.682353, 0.623529, 0, 1 )
-text = "Level: 1"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="KillsLabel" type="Label" parent="HUD"]
-margin_left = 16.0
-margin_top = 568.0
-margin_right = 73.0
-margin_bottom = 591.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.682353, 0.623529, 0, 1 )
-text = "0 Kills"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HUD" parent="." instance=ExtResource( 5 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "scroll"

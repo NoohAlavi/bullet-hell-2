@@ -40,7 +40,7 @@ public class Player : KinematicBody2D
 
         _anim = GetNode<AnimationPlayer>("AnimationPlayer");
 
-        _background = GetNode<Sprite>("/root/World/Background");
+        _background = GetNode<Sprite>("../Background");
     }
 
     public override void _Process(float delta)
@@ -49,10 +49,10 @@ public class Player : KinematicBody2D
         {
             GetTree().ChangeScene("res://GameOver/GameOver.tscn");
         }
-        GetNode<Label>("/root/World/HUD/LevelLabel").Text = "Level " + Level.ToString();
-        GetNode<Label>("/root/World/HUD/KillsLabel").Text = Kills.ToString() + " Kills";
-        GetNode<Sprite>("/root/World/HUD/LivesBar").Frame = Convert.ToInt32(3f - Health);
-        GetNode<TextureProgress>("/root/World/HUD/XPBar").Value = XP;
+        GetNode<Label>("../HUD/LevelLabel").Text = "Level " + Level.ToString();
+        GetNode<Label>("../HUD/KillsLabel").Text = Kills.ToString() + " Kills";
+        GetNode<Sprite>("../HUD/LivesBar").Frame = Convert.ToInt32(3f - Health);
+        GetNode<TextureProgress>("../HUD/XPBar").Value = XP;
 
         if (XP >= 100f)
         {
@@ -86,7 +86,7 @@ public class Player : KinematicBody2D
         {
             Speed = MaxSpeed / 2;
             _collision.Show();
-            foreach (Bullet bullet in GetNode("/root/World/BulletHolder").GetChildren())
+            foreach (Bullet bullet in GetNode("../BulletHolder").GetChildren())
             {
                 bullet.Collider.Show();
             }
@@ -98,7 +98,7 @@ public class Player : KinematicBody2D
         {
             Speed = MaxSpeed;
             _collision.Hide();
-            foreach (Bullet bullet in GetNode("/root/World/BulletHolder").GetChildren())
+            foreach (Bullet bullet in GetNode("../BulletHolder").GetChildren())
             {
                 bullet.Collider.Hide();
             }
@@ -114,7 +114,7 @@ public class Player : KinematicBody2D
         {
 
             Bullet bullet = _bulletScene.Instance() as Bullet;
-            GetNode("/root/World/BulletHolder").AddChild(bullet);
+            GetNode("../BulletHolder").AddChild(bullet);
             bullet.Position = Position;
             bullet.Direction = Vector2.Up;
             bullet.Speed = 1000f;
