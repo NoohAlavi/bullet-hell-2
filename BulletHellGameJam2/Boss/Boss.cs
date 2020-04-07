@@ -4,7 +4,7 @@ using System;
 public class Boss : KinematicBody2D
 {
 
-    public float Health = 300f;
+    public float Health = 200f;
 
     private Vector2 _velocity = new Vector2();
     private float _maxSpeed = 100f;
@@ -17,6 +17,7 @@ public class Boss : KinematicBody2D
     public override void _Ready()
     {
         _player = GetNode<Player>("../Player");
+        _player.Health = 3f;
 
         _bulletScene = ResourceLoader.Load<PackedScene>("res://Bullet/Bullet.tscn");
         _virusScene = ResourceLoader.Load<PackedScene>("res://VirusEnemy/VirusEnemy.tscn");
@@ -26,6 +27,8 @@ public class Boss : KinematicBody2D
 
         GetNode<Timer>("ShootTimer").Connect("timeout", this, "Shoot");
         GetNode<Timer>("SpawnTimer").Connect("timeout", this, "Spawn");
+
+        GetNode<AudioStreamPlayer>("../MusicPlayer").QueueFree();
     }
 
     public override void _Process(float delta)

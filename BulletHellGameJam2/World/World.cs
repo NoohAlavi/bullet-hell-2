@@ -12,6 +12,7 @@ public class World : Node2D
     private Camera2D _camera;
     private bool _isBossSpawned = false;
     private PackedScene _bossScene;
+    private AudioStreamPlayer _music;
 
     public override void _Ready()
     {
@@ -29,13 +30,14 @@ public class World : Node2D
 
         _player = GetNode<Player>("Player");
         _camera = GetNode<Camera2D>("Camera2D");
+        _music = GetNode<AudioStreamPlayer>("MusicPlayer");
 
         SpawnEnemies();
     }
 
     public override void _Process(float delta)
     {
-        if (_player.Kills >= 20f)
+        if (_player.Kills >= 100f)
         {
             SpawnBoss();
         }

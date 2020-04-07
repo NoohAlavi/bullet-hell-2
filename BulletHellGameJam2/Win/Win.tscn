@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Font.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://GameOverFont.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 26
+font_data = ExtResource( 2 )
 
 [node name="Win" type="Control"]
 anchor_right = 1.0
@@ -16,7 +21,10 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 512.0
 margin_bottom = 600.0
-color = Color( 0, 1, 0, 1 )
+color = Color( 0, 0.572549, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 margin_left = 160.0
@@ -24,7 +32,27 @@ margin_top = 64.0
 margin_right = 348.0
 margin_bottom = 110.0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 1, 0.905882, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0.784314, 0.784314, 1 )
 text = "YOU WIN!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 128.0
+margin_right = 499.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 1, 0.905882, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0.784314, 0.784314, 1 )
+text = "Congratulations - against all odds, you have 
+successfully removed the nasty virus from your 
+system. You decide to upgrade to Linux so you
+never have to go through this.... adventure... 
+ever again.
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }

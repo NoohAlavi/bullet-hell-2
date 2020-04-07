@@ -33,7 +33,7 @@ script = ExtResource( 4 )
 
 [node name="Background" type="Sprite" parent="."]
 modulate = Color( 0.317647, 0.317647, 0.317647, 1 )
-position = Vector2( 253.846, 501.999 )
+position = Vector2( 254.276, 420.8 )
 texture = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -96,7 +96,7 @@ position = Vector2( 256, 296 )
 autoplay = "scroll"
 anims/scroll = SubResource( 1 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -20.0
 autoplay = true
