@@ -15,6 +15,7 @@ public class Bullet : Area2D
         Connect("body_entered", this, "OnBodyEntered");
         Connect("area_entered", this, "OnAreaEntered");
         GD.Randomize();
+        GetNode<AudioStreamPlayer2D>("Sound").PitchScale = GD.Randf() + 1f;
         float r = GD.Randf();
         float g = GD.Randf();
         float b = GD.Randf();

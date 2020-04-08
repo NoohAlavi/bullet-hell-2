@@ -41,6 +41,7 @@ public class Player : KinematicBody2D
         _anim = GetNode<AnimationPlayer>("AnimationPlayer");
 
         _background = GetNode<Sprite>("../Background");
+        GetNode<Area2D>("Area2D").Connect("area_entered", this, "OnAreaEntered");
 
         // PlayerInfo playerStats = GetNode<PlayerInfo>("/root/PlayerInfo");
         // MaxSpeed = playerStats.Speed;
@@ -57,7 +58,7 @@ public class Player : KinematicBody2D
             GetTree().ChangeScene("res://GameOver/GameOver.tscn");
         }
         GetNode<Label>("../HUD/LevelLabel").Text = "Level " + Level.ToString();
-        GetNode<Label>("../HUD/KillsLabel").Text = Kills.ToString() + " Kills";
+        GetNode<Label>("../HUD/KillsLabel").Text = "You Uncorrupted " + Kills.ToString() + "  Files";
         GetNode<Sprite>("../HUD/LivesBar").Frame = Convert.ToInt32(3f - Health);
         GetNode<TextureProgress>("../HUD/XPBar").Value = XP;
 
@@ -143,5 +144,14 @@ public class Player : KinematicBody2D
     private void HideParticles()
     {
         HurtParticles.Emitting = false;
+    }
+
+    private void OnAreaEntered(Area2D area)
+    {
+        if (area is Orb)
+        {
+            XP += 10f;
+            area.QueueFree();
+        }
     }
 }

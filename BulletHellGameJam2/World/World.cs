@@ -37,7 +37,7 @@ public class World : Node2D
 
     public override void _Process(float delta)
     {
-        if (_player.Kills >= 100f)
+        if (_player.Kills >= 150f)
         {
             SpawnBoss();
         }

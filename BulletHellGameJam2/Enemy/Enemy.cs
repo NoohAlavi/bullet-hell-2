@@ -50,7 +50,7 @@ public class Enemy : KinematicBody2D
 
     private void Shoot()
     {
-        if (!IsDead)
+        if (!IsDead && Position.DistanceTo(_player.Position) > 32)
         {
             Bullet bullet = _bulletScene.Instance() as Bullet;
             GetNode("/root/World/BulletHolder").AddChild(bullet);

@@ -7,22 +7,22 @@
 [ext_resource path="res://Enemy/Idle.png" type="Texture" id=5]
 [ext_resource path="res://MainMenu/Untitled_song.wav" type="AudioStream" id=6]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 80
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 font_data = ExtResource( 2 )
 
-[sub_resource type="InputEventJoypadButton" id=1]
+[sub_resource type="InputEventJoypadButton" id=4]
 
-[sub_resource type="ShortCut" id=2]
-shortcut = SubResource( 1 )
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "Anim"
@@ -144,7 +144,7 @@ margin_left = 128.0
 margin_top = 72.0
 margin_right = 391.0
 margin_bottom = 149.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Antivirus"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -155,7 +155,7 @@ margin_left = 16.0
 margin_top = 560.0
 margin_right = 474.0
 margin_bottom = 587.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "Developed and Programmed by Nooh Alavi, Art by Walter Barlow 
 (Waller3000),  music by Leftlane"
 __meta__ = {
@@ -167,8 +167,8 @@ margin_left = 216.0
 margin_top = 256.0
 margin_right = 300.0
 margin_bottom = 293.0
-custom_fonts/font = SubResource( 4 )
-shortcut = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
+shortcut = SubResource( 5 )
 text = "PLAY"
 flat = true
 __meta__ = {

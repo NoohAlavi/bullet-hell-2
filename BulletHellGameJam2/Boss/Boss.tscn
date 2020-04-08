@@ -4,11 +4,10 @@
 [ext_resource path="res://Boss/Boss.cs" type="Script" id=2]
 [ext_resource path="res://World/boss-music.wav" type="AudioStream" id=3]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 24.0
 
-[sub_resource type="Animation" id=1]
-resource_name = "Idle"
+[sub_resource type="Animation" id=2]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -33,11 +32,11 @@ hframes = 31
 frame = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Idle = SubResource( 1 )
+anims/Idle = SubResource( 2 )
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.25

@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player/Player.cs" type="Script" id=1]
 [ext_resource path="res://Bullet/Bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Idle animation.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 2, 2 )
+extents = Vector2( 0, 2 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Focus"
 loop = true
 tracks/0/type = "value"
@@ -23,8 +23,7 @@ tracks/0/keys = {
 "values": [ 24 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
+[sub_resource type="Animation" id=3]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -40,6 +39,9 @@ tracks/0/keys = {
 "values": [ 0, 26 ]
 }
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 24 )
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 _bulletScene = ExtResource( 2 )
@@ -49,7 +51,6 @@ texture = ExtResource( 3 )
 hframes = 27
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -16 )
 shape = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="Collider"]
@@ -64,8 +65,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Focus = SubResource( 3 )
-anims/Idle = SubResource( 2 )
+anims/Focus = SubResource( 2 )
+anims/Idle = SubResource( 3 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
@@ -81,3 +82,8 @@ color = Color( 0, 1, 0.952941, 1 )
 
 [node name="ParticlesTimer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 4 )
