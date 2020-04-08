@@ -89,6 +89,7 @@ autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 256, 296 )
+current = true
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 

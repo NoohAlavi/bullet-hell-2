@@ -57,6 +57,7 @@ public class Bullet : Area2D
             Player p = body as Player;
             p.Health--;
             p.HurtParticles.Emitting = true;
+            p.Hurt();
             p.ParticlesTimer.Start();
             QueueFree();
         }
@@ -64,7 +65,7 @@ public class Bullet : Area2D
         if (body is Boss && !isEnemyBullet)
         {
             Boss b = body as Boss;
-            b.Health -= 2.5f;
+            b.Damage();
             QueueFree();
         }
     }

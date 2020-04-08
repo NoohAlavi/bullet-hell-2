@@ -14,6 +14,8 @@ public class Boss : KinematicBody2D
     private PackedScene _bulletScene;
     private PackedScene _virusScene;
 
+    private bool _isRed = false;
+
     public override void _Ready()
     {
         _player = GetNode<Player>("../Player");
@@ -73,5 +75,18 @@ public class Boss : KinematicBody2D
         float randX = GD.Randi() % 512;
         float randY = GD.Randi() % 32;
         v.Position = new Vector2(randX, randY);
+    }
+
+    async public void Damage()
+    {
+        if (!_isRed)
+        {
+            Health -= 2.5f;
+            _isRed = true;
+            Modulate = new Color(1f, 0f, 0f);
+            await ToSignal(GetTree().CreateTimer(.25f), "timeout");
+            Modulate = new Color(1f, 1f, 1f);
+            _isRed = false;
+        }
     }
 }

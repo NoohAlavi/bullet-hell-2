@@ -71,10 +71,10 @@ public class Player : KinematicBody2D
             Health = 3f;
         }
 
-        if (Kills >= 20f)
-        {
-            // GetTree().ChangeScene("res://BossFight/BossFight.tscn");
-        }
+        // if (Kills >= 20f)
+        // {
+        //     GetTree().ChangeScene("res://BossFight/BossFight.tscn");
+        // }
     }
 
     public override void _PhysicsProcess(float delta)
@@ -119,6 +119,13 @@ public class Player : KinematicBody2D
             _background.Texture = ResourceLoader.Load<Texture>("res://World/Background 2.png");
             _background.Modulate = new Color(.5f, .5f, .5f);
         }
+    }
+
+    async public void Hurt()
+    {
+        Modulate = new Color(1f, 0f, 0f);
+        await ToSignal(GetTree().CreateTimer(0.25f), "timeout");
+        Modulate = new Color(1f, 1f, 1f);
     }
 
     private void Shoot()

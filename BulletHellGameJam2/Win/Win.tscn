@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Font.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://GameOverFont.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Win/winMusic.wav" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -56,3 +57,7 @@ ever again.
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true

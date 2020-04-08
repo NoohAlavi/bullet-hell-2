@@ -19,10 +19,6 @@ config/name="BulletHellGameJam2"
 run/main_scene="res://MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-PlayerInfo="res://PlayerInfo.cs"
-
 [display]
 
 window/size/width=512
