@@ -69,13 +69,26 @@ public class Boss : KinematicBody2D
         b.isEnemyBullet = true;
     }
 
-    private void Spawn()
+    async private void Spawn()
     {
-        VirusEnemy v = _virusScene.Instance() as VirusEnemy;
-        GetNode("../EnemyHolder").AddChild(v);
-        float randX = GD.Randi() % 512;
-        float randY = GD.Randi() % 32;
-        v.Position = new Vector2(randX, randY);
+        GetNode<AnimationPlayer>("AnimationPlayer").Play("Spawn Enemies");
+        for (int i = 0; i < 2; i++)
+        {
+            VirusEnemy v = _virusScene.Instance() as VirusEnemy;
+            GetNode("../EnemyHolder").AddChild(v);
+            float randX = GD.Randi() % 128;
+            float randY = GD.Randi() % 32;
+            if (i == 0)
+            {
+                v.Position = new Vector2(Position.x + 128, Position.y);
+            }
+            else
+            {
+                v.Position = new Vector2(Position.x - 128, Position.y);
+            }
+        }
+        await ToSignal(GetTree().CreateTimer(1), "timeout");
+        GetNode<AnimationPlayer>("AnimationPlayer").Play("Idle");
     }
 
     public void Damage()
