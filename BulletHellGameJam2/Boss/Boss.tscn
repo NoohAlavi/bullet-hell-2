@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Boss/Virus_Idle.png" type="Texture" id=1]
+[ext_resource path="res://BossFight/Virus_Idle2.png" type="Texture" id=1]
 [ext_resource path="res://Boss/Boss.cs" type="Script" id=2]
 [ext_resource path="res://World/boss-music.wav" type="AudioStream" id=3]
 
@@ -16,10 +16,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0, 32 ]
+"values": [ 0, 30 ]
 }
 
 [node name="Boss" type="KinematicBody2D"]
@@ -29,7 +29,6 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 31
-frame = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -50,3 +49,6 @@ autostart = true
 stream = ExtResource( 3 )
 volume_db = -10.0
 autoplay = true
+
+[node name="ColorTimer" type="Timer" parent="."]
+wait_time = 0.25

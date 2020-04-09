@@ -121,11 +121,10 @@ public class Player : KinematicBody2D
         }
     }
 
-    async public void Hurt()
+    public void Hurt()
     {
         Modulate = new Color(1f, 0f, 0f);
-        await ToSignal(GetTree().CreateTimer(0.25f), "timeout");
-        Modulate = new Color(1f, 1f, 1f);
+        ParticlesTimer.Start();
     }
 
     private void Shoot()
@@ -151,6 +150,7 @@ public class Player : KinematicBody2D
     private void HideParticles()
     {
         HurtParticles.Emitting = false;
+        Modulate = new Color(1f, 1f, 1f);
     }
 
     private void OnAreaEntered(Area2D area)

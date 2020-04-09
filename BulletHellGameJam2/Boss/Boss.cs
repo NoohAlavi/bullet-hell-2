@@ -29,6 +29,7 @@ public class Boss : KinematicBody2D
 
         GetNode<Timer>("ShootTimer").Connect("timeout", this, "Shoot");
         GetNode<Timer>("SpawnTimer").Connect("timeout", this, "Spawn");
+        GetNode<Timer>("ColorTimer").Connect("timeout", this, "RestoreColor");
 
         GetNode<AudioStreamPlayer>("../MusicPlayer").QueueFree();
     }
@@ -77,16 +78,20 @@ public class Boss : KinematicBody2D
         v.Position = new Vector2(randX, randY);
     }
 
-    async public void Damage()
+    public void Damage()
     {
         if (!_isRed)
         {
             Health -= 2.5f;
             _isRed = true;
             Modulate = new Color(1f, 0f, 0f);
-            await ToSignal(GetTree().CreateTimer(.25f), "timeout");
-            Modulate = new Color(1f, 1f, 1f);
-            _isRed = false;
+            GetNode<Timer>("ColorTimer").Start(0.25f);
         }
+    }
+
+    private void RestoreColor()
+    {
+        Modulate = new Color(1f, 1f, 1f);
+        _isRed = false;
     }
 }

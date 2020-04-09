@@ -54,6 +54,7 @@ hframes = 27
 shape = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="Collider"]
+visible = false
 margin_left = -2.15448
 margin_top = -2.00058
 margin_right = 1.84552
@@ -82,7 +83,7 @@ scale_amount = 4.0
 color = Color( 0, 1, 0.952941, 1 )
 
 [node name="ParticlesTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.25
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -17,6 +17,8 @@ _global_script_class_icons={
 
 config/name="BulletHellGameJam2"
 run/main_scene="res://MainMenu/MainMenu.tscn"
+boot_splash/image="res://splashScreen.png"
+boot_splash/use_filter=false
 config/icon="res://icon.png"
 
 [display]
