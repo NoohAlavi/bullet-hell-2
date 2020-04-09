@@ -157,7 +157,8 @@ margin_right = 474.0
 margin_bottom = 587.0
 custom_fonts/font = SubResource( 2 )
 text = "Developed and Programmed by Nooh Alavi, Art by Walter Barlow 
-(Waller3000),  music by Leftlane"
+(Waller3000),  music by Leftlane, Sounds by Yahya Patel
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }

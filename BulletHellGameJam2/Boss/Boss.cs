@@ -30,6 +30,7 @@ public class Boss : KinematicBody2D
         GetNode<Timer>("ShootTimer").Connect("timeout", this, "Shoot");
         GetNode<Timer>("SpawnTimer").Connect("timeout", this, "Spawn");
         GetNode<Timer>("ColorTimer").Connect("timeout", this, "RestoreColor");
+        GetNode<Timer>("AnimTimer").Connect("timeout", this, "RestoreAnim");
 
         GetNode<AudioStreamPlayer>("../MusicPlayer").QueueFree();
     }
@@ -69,7 +70,7 @@ public class Boss : KinematicBody2D
         b.isEnemyBullet = true;
     }
 
-    async private void Spawn()
+    private void Spawn()
     {
         GetNode<AnimationPlayer>("AnimationPlayer").Play("Spawn Enemies");
         for (int i = 0; i < 2; i++)
@@ -87,7 +88,7 @@ public class Boss : KinematicBody2D
                 v.Position = new Vector2(Position.x - 128, Position.y);
             }
         }
-        await ToSignal(GetTree().CreateTimer(1), "timeout");
+        GetNode<Timer>("AnimTimer").Start(.25f);
         GetNode<AnimationPlayer>("AnimationPlayer").Play("Idle");
     }
 
@@ -106,5 +107,10 @@ public class Boss : KinematicBody2D
     {
         Modulate = new Color(1f, 1f, 1f);
         _isRed = false;
+    }
+
+    private void RestoreAnim()
+    {
+        GetNode<AnimationPlayer>("AnimationPlayer").Play("Idle");
     }
 }

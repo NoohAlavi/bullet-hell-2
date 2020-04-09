@@ -120,3 +120,6 @@ autoplay = true
 
 [node name="ColorTimer" type="Timer" parent="."]
 wait_time = 0.25
+
+[node name="AnimTimer" type="Timer" parent="."]
+wait_time = 0.25
